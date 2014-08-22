@@ -1,0 +1,132 @@
+@CHARSET "UTF-8";
+.fpContent{
+
+}
+
+.head{
+	
+}
+.foot{
+	height:40px;
+}
+.goodPanel{
+	position: relative;
+	left:30%;
+	width:60px;
+	height:90px;
+	text-align: center;
+}
+.goodIcon1{
+	width:60px;
+	height:60px;
+}
+.goodIcon{
+	width:60px;
+	height:60px;
+}
+.goodTitle{
+	width:60px;
+	height:30px;
+	font-size:20px;
+	font-weight: bold;
+}
+.base-icon{
+	position:absolute;
+	left:5px;
+	top:3px;
+	width:50px;
+	height:35px;
+}
+.backBtn{
+	width: 40px;
+	height: 25px;
+	top: -3px;
+	left: -2px;
+}
+.baseIconIna{
+	width: 50px;
+	height: 35px;
+	position: relative;
+	bottom: 4px;
+}
+#position{
+	left:60px;	
+}
+#toMap{	
+	right:80px;
+}
+.search_cls{
+	
+}
+#home{
+	position:absolute;
+	top:-10px;
+	left:0px;
+	width:32%;
+}
+#myInfo{
+	position:absolute;
+	top:-10px;
+	left:32%;
+	width:32%;
+}
+#setting{
+	position:absolute;
+	top:-10px;
+	left:64%;
+	width:32%;
+}
+.newGood{
+	position:relative;
+	top:30px;
+}
+
+.theUser{
+	#font-size: 17px;
+	#font-weight: bold;
+	text-align: center;
+}
+#uploadPic{
+	width:100px;
+	height:80px;
+	background-image:url(img/null.jpg) ;
+	background-size:100% 100%;
+	backgournd-repeat:no-repeat no-repeat;
+}
+#scanPic{
+	width:20%;
+}
+#uploadGood{
+	position:relative;
+	width:41%;
+}
+#finishUpload{
+	position:relative;
+	width:41%;
+}
+#theGoodPic {
+	width: 200px; 
+	height : 160px; 
+	position : relative; 
+	left : 27%;
+	background-image: url(img/test1.png);
+	background-size: 100% 100%;
+	backgournd-repeat: no-repeat no-repeat;
+}
+#theGoodPrice{
+	font-size: 20px;
+	font-weight: 900;
+	position: relative;
+	left: 36%;
+}
+#theGoodDisp{
+	font-size: 20px;
+}
+
+#bugOther{
+	width:48%;
+}
+#goPayment{
+	width:48%;
+}
+

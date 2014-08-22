@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	
+	<link rel="stylesheet" href="lib/jquery.mobile-1.4.3.min.css" type="text/css"></link>
+	<link rel="stylesheet" href="lib/jquery.mobile.theme-1.4.3.min.css" type="text/css"></link>
+	
+	<link rel="stylesheet" href="myCls.css">
+	
+	<script src="lib/jquery-1.10.2.min.js" type="text/javascript"></script>
+	<script src="lib/jquery.mobile-1.4.3.min.js" type="text/javascript"></script>
+	<script src="lib/cordova.js" type="text/javascript"></script>
+	<!-- <script src="http://109.123.112.163:8081/target/target-script-min.js#anonymous" type="text/javascript">
+</script> -->
+	
+	<meta name = "viewport" content ="width=decive-width, initial-scale=1">
+<title>Sample</title>
+</head>
+<body>
+	<div data-role="page" id="pageHome">
+		<div data-role="header" data-theme="a"class="head" data-position="fixed">
+			
+			<h1><img src="img/icon.png" class="base-icon"></img></h1>
+			<a href="#dg1" id="position"data-type="button" data-icon="arrow-d" data-iconpos="right">南京</a>			
+			<a href="#" id="toMap" data-type="button" data-icon="location" class="ui-btn-right">地图</a>
+			<a href="#" id="search" data-type="button" data-icon="search" class="ui-btn-right search_cls">搜索</a>
+			
+		</div>
+		<div data-role="content" class="fpContent" id="page1_content">
+			<legend>今日推荐</legend>
+			<div data-role="controlgroup" data-type="vertical">
+				<div class="ui-grid-b">
+	     			<div class="ui-block-a">
+		     			<div href="#" data-type="button" id="good1" class="goodPanel">
+					 		<img src="img/test1.png" class="goodIcon"></img>
+					 		<span class="goodTitle">test1</span>
+					 	</div>
+	     			</div>
+	     			<div class="ui-block-b">
+	     				<div href="#" data-type="button" id="good2" class="goodPanel">
+					 		<img src="img/tt1.png" class="goodIcon"></img>
+					 		<span class="goodTitle">tt1</span>
+				 		</div>
+	     			</div>
+	     			<div class="ui-block-c">
+	     				<div href="#" data-type="button" id="good3" class="goodPanel">
+					 		<img src="img/d1.png" class="goodIcon"></img>
+					 		<span class="goodTitle">d1</span>
+				 		</div>
+	     			</div>
+	   			</div>
+	   			<div class="ui-grid-b">
+	     			<div class="ui-block-a">
+	     				<div href="#" data-type="button" id="good4" class="goodPanel">
+					 		<img src="img/test2.png" class="goodIcon"></img>
+					 		<span class="goodTitle">test2</span>
+					 	</div>
+	     			</div>
+	     			<div class="ui-block-b">
+	     				<div href="#" data-type="button" id="good5" class="goodPanel">
+					 		<img src="img/tt2.png" class="goodIcon"></img>
+					 		<span class="goodTitle">tt2</span>
+				 		</div>
+	     			</div>
+	     			<div class="ui-block-c">
+	     				<div href="#" data-type="button" id="good6" class="goodPanel">
+					 		<img src="img/d2.png" class="goodIcon"></img>
+					 		<span class="goodTitle">d2</span>
+				 		</div>
+	     			</div>
+	   			</div>
+   			</div>
+			
+			<div data-role="collapsible-set">							
+				<div data-role="collapsible" >
+					<h2>Class1</h1>
+					<ul id="goodListCls1" data-role="listview">
+						<li><a href="#" data-transition="pop"><img src="img/test1.png"></img><span>test1</span></a></li>
+						<li>Good2</li>
+						<li>Good3</li>
+					</ul>
+				</div>
+				<div data-role="collapsible">
+					<h2>Class2</h1>
+					<ul id="goodListCls2" data-role="listview">
+						<li>Good4</li><li>Good5</li><li>Good6</li>
+					</ul>
+				</div>
+				<div data-role="collapsible">
+					<h2>Class3</h1>
+					<ul id="goodListCls3" data-role="listview">
+						<li>Good7</li><li>Good8</li><li>Good9</li>
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+		<div data-role="footer"class ="foot ui-bar" data-position="fixed">
+			<a href="#pageHome" id="home"data-type="button" data-icon="home" data-iconpos="top">首页</a>			
+			 <a href="#pageSelfInfo" id="myInfo"data-type="button" data-icon="user" data-iconpos="top">我的</a>
+			<a href="#moreInfo" id="setting"data-type="button" data-icon="grid" data-iconpos="top">更多</a>
+		</div>
+		
+	</div>
+	
+	<!-- merchants page -->
+	<div data-role="page" id="pageMerchant">
+		<div data-role="header" data-theme="a"class="head" data-position="fixed">		
+			<h1>店铺信息</h1>
+			<a href="#pageHome" data-type="button" data-icon="arrow-l" class="backBtn" data-iconpos="left">
+				 <img src="img/icon.png" class="baseIconIna" data-icon="arrow-l"></img> </a>							
+		</div>
+		<div data-role="content" >
+			
+			<ul data-role="listview" data-inset="true">
+				<li> <button>编辑店铺信息</button> </li>
+				<li data-role = "list-divider">订单信息</li>
+				<li><a href="#" data-transition="pop">张先生</a><span class="ui-li-aside">13770644937</span></li>
+			</ul>
+		</div>
+		<div data-role="footer"class ="foot ui-bar" data-position="fixed">
+			<a href="#pageHome" id="home"data-type="button" data-icon="home" data-iconpos="top">首页</a>			
+			 <a href="#pageSelfInfo" id="myInfo"data-type="button" data-icon="user" data-iconpos="top">我的</a>
+			<a href="#moreInfo" id="setting"data-type="button" data-icon="grid" data-iconpos="top">更多</a>
+		</div>
+	</div>
+	
+	
+	
+	
+	<!-- user page -->
+	<div data-role="page" id="pageSelfInfo">
+		<div data-role="header" data-theme="a"class="head" data-position="fixed">
+			
+			<h1>我的</h1>
+			<a href="#pageHome" data-type="button" data-icon="arrow-l" class="backBtn" data-iconpos="left">
+				 <img src="img/icon.png" class="baseIconIna" data-icon="arrow-l"></img> </a>							
+		</div>
+		<div data-role="content" class="fpContent" id="page1_content">
+			<ul data-role="listview" data-inset="true" id="userListview">
+				<li id="userBar"><a href="#login" data-transition="pop">匿名用户</a><span class="ui-li-aside">请登录</span></li>
+			</ul>
+		
+			<ul data-role="listview" data-inset="true">
+				<li data-role = "list-divider">订单</li>
+				<li><a href="#" data-transition="pop">代付款</a><span class="ui-li-count">0</span></li>
+				<li><a href="#" data-transition="pop">已付款</a><span class="ui-li-count">0</span></li>
+				<li><a href="#" data-transition="pop">抽奖单</a><span class="ui-li-count">0</span></li>
+			</ul>
+			<ul data-role="listview" data-inset="true">
+				<li data-role = "list-divider">其他</li>
+				<li><a href="#" data-transition="pop">代金劵</a><span class="ui-li-count">0</span></li>				
+			</ul>	
+			
+		</div>
+		<div data-role="footer"class ="foot ui-bar" data-position="fixed">
+			<a href="#pageHome" id="home"data-type="button" data-icon="home" data-iconpos="top">首页</a>			
+			 <a href="#pageSelfInfo" id="myInfo"data-type="button" data-icon="user" data-iconpos="top">我的</a>
+			<a href="#moreInfo" id="setting"data-type="button" data-icon="grid" data-iconpos="top">更多</a>
+		</div>
+		
+	</div>
+	
+	<!-- moreInfo page -->
+	<div data-role="page" id="moreInfo">
+		<div data-role="header" data-theme="a"class="head" data-position="fixed">			
+			<h1>更多</h1>						
+		</div>
+		<div data-role="content" class="fpContent" id="page1_content">
+			<ul data-role="listview" data-inset="true">
+				<li><button id="setUpShop">我要开店</button></li>
+				<li><a href="#" data-transition="pop">公告中心</a></li>				
+				<li><a href="#" data-transition="pop">忘记密码</a></li>
+				<li><a href="#" data-transition="pop">帮助中心</a></li>
+				<li><a href="#" data-transition="pop">用户反馈</a></li>
+				<li><a href="#" data-transition="pop">关于</a></li>
+				<li><button id="unLogin">退出登录</button></li>
+			</ul>			
+		</div>
+		<div data-role="footer"class ="foot ui-bar" data-position="fixed">
+			<a href="#pageHome" id="home"data-type="button" data-icon="home" data-iconpos="top">首页</a>			
+			 <a href="#pageSelfInfo" id="myInfo"data-type="button" data-icon="user" data-iconpos="top">我的</a>
+			<a href="#" id="setting"data-type="button" data-icon="grid" data-iconpos="top">更多</a>
+		</div>
+		
+	</div>
+	<!-- boss upload good page -->
+	<div data-role="page" id="uploadpage" data-position="fixed">
+		<div data-role="header">
+			<h1>上传您的商品信息</h1>
+			<a href="#moreInfo" data-type="button" data-icon="arrow-l" class="backBtn" data-iconpos="left">
+				 <img src="img/icon.png" class="baseIconIna" data-icon="arrow-l"></img> </a>
+		</div>
+		<div data-role="content">
+			<ul data-role="listview">
+				<li data-role = "list-divider">已上传的商品：</li>
+				<li><span>Good1</span><span class="ui-li-aside">￥10.00元</span></li>
+			</ul> 
+			<div class="newGood">
+				<legend>上传新的商品信息</legend>
+				<div data-role="fieldcontainer">
+					<div id="uploadPic"></div>
+					<button id="scanPic">浏览</button>
+					<label>商品名：</label>
+					<input type="text"></input>
+					<label>价格：</label>
+					<input type="text"></input>
+					<label>商品简述：</label>
+					<input type="text"></input>
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed">
+			<a id="uploadGood"data-type="button" >上传商品</a>	
+			<a id="finishUpload"data-type="button">完成上传</a>	
+		</div>
+	</div>
+	
+	<!-- Business Rigister page -->
+	<div data-role="page" id="businessRigister">
+		<div data-role="header">
+			<h1>商户注册信息</h1>
+			<a href="#moreInfo" data-type="button" data-icon="arrow-l" class="backBtn" data-iconpos="left">
+				 <img src="img/icon.png" class="baseIconIna" data-icon="arrow-l"></img> </a>	
+		</div>
+		<div data-role="content">
+			<div data-role="fieldcontainer">
+				<label>啊哈哈哈哈哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈哈嘻嘻i嘻嘻嘻嘻嘻</label>
+				<label for="treaty">本人已阅读并同意上述条款</label>
+				<input type="checkbox" id="treaty" name="treaty"></input>
+			</div>
+			<div data-role="fieldcontainer">
+		 		<label for="tradeName">店名:</label>
+		 		<input type="text" id="tradeName" name="tradeName"></input>
+		 		<label for="bossName">店主姓名:</label>
+		 		<input type="text" id="bossName" name="bossName"></input>
+		 		<label for="bossTel">手机号码:</label>
+		 		<input type="text" id="bossTel" name="bossTel"></input>
+		 		<label for="bossPassWord">密码:</label>
+		 		<input type="password" id="bossPassWord" name="bossPassWord"></input>
+		 		<label for="repPassName">确认密码:</label>
+		 		<input type="password" id="repPassName" name="repPassName"></input>
+		 		<button id="boss_register">注册</button>
+		 	</div>	
+		
+		</div>
+	</div>
+	
+	<!-- user buy -->
+	<div data-role="dialog" id="buyGood" data-overlay-theme="a">
+		<div data-role="header">
+			<h1 id="theGoodName">Good1</h1>
+		</div>
+		<div data-role="content">
+			<div data-role="fieldcontainer">
+				<div id="theGoodPic"></div>
+				<label id="theGoodPrice">￥10.00元</label>
+				<label id="theGoodDisp">这是什么鸟东西</label>
+				<label for="count">购买数量：</label>
+				<input name="count" id="count"></input>
+							
+			</div>
+			<div data-role="footer">
+				<button id="bugOther">继续购买</button>
+				<button id="goPayment">购物车结算</button>
+			</div>
+		</div>
+	</div>
+	<!-- user login page -->
+	 <div data-role="dialog" id="login" data-overlay-theme = "a">
+	 	<div data-role="header">
+	 		<h1>登录联系信息</h1>
+	 	</div>
+	 	<div data-role="content">
+		 	<div data-role="fieldcontainer">
+		 		<label for="costomerName">联系人:</label>
+		 		<input type="text" id="costomerName" name="costomerName" required placeholder="联系人 如：张先生"></input>
+		 		<label for="costomerTel">手机号码:</label>
+		 		<input type="text" id="costomerTel" name="costomerTel" required placeholder="请输入手机号码"></input>
+		 		<button id="userLogin">登录</button>
+		 	</div>	
+	 	</div>					
+	</div>
+	
+	<!-- alert dialog -->
+	<div data-role="dialog" id="alert" data-overlay-theme="a">
+		<div data-role="header">
+			<h1>错误信息</h1>
+		</div>
+		<div data-role="content">
+			<div data-role="fieldcontainer">
+				<label id="alertMsg">错了</label>
+			</div>
+		</div>
+	</div>
+	
+	
+	<script src="initPage.js" type="text/javascript" charset="gb2312"></script>
+</body>
+</html>

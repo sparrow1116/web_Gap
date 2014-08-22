@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Understanding the jQuery Mobile API</title>
+  <link rel="stylesheet" href="lib/jquery.mobile-1.4.3.min.css" type="text/css"></link>
+	<link rel="stylesheet" href="lib/jquery.mobile.theme-1.4.3.min.css" type="text/css"></link>
+  <script src="lib/jquery-1.10.2.min.js" type="text/javascript"></script>
+	<script src="lib/jquery.mobile-1.4.3.min.js" type="text/javascript"></script>
+  <script>
+$(document).on("pageinit","#pageone",function(){
+  $("p").on("tap",function(){
+    $(this).hide();
+  });                       
+});
+</script>
+</head>
+
+<body>
+  <div data-role="page" id="pageone">
+  <div data-role="header">
+    <h1>tap 事件</h1>
+  </div>
+
+  <div data-role="content">
+    <p>敲击我，我会消失。</p>
+    <p>敲击我，我会消失。</p>
+    <p>敲击我，我也会消失。</p>
+  </div>
+
+  <div data-role="footer">
+    <h1>页脚文本</h1>
+  </div>
+</div> 
+</body>
+</html>
