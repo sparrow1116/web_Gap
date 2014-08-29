@@ -5,9 +5,23 @@
     <servlet-name>GetGoodsServer</servlet-name>
     <servlet-class>com.union.GetGoodsServer</servlet-class>
   </servlet>
+ 
+ <servlet>
+    <servlet-name>ControlGoodsInfoServer</servlet-name>
+    <servlet-class>com.union.ControlGoodsInfoServer</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ControlGoodsInfoServer</servlet-name>
+    <url-pattern>/ControlGoodsInfoServer</url-pattern>
+  </servlet-mapping>
+ 
   
   <servlet-mapping>
     <servlet-name>GetGoodsServer</servlet-name>
     <url-pattern>/GetGoodsServer</url-pattern>
   </servlet-mapping>
+  
+  
+  
 </web-app>

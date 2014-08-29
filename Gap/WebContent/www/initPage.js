@@ -12,6 +12,11 @@ var tel = null;
 var name = null;
 var localRole = null;
 
+var shopNameToGoodsInfoMap = new Map();
+//var goodArrayInShop = [];
+//var nameToId = {};
+
+var curSelectGood = null;
 
 function isMobil(ss){
 	var re= /^(13[0-9]{9})|(15[89][0-9]{8})$/;
@@ -63,22 +68,57 @@ $(document).on("pageinit","#moreInfo",function(){
 	
 });
 
-function getItem(event){
+function getItemInRecommand(event){
 	
 	var e = event || window.event;
 	var item =  e.target || e.srcElement;
 	return item.parentNode;
 }
 
+function getLIDom(dom){
+	if(dom.tagName == 'LI'){
+		return dom;
+	}
+	return getLIDom(dom.parentNode);
+}
 
 $(document).on("pageinit","#pageHome",function(){
 	$(".goodPanel").tap(function(e){
-		var item = getItem(e);
+		var item = getItemInRecommand(e);
+		
+		var name = $($(item).children()[1]).text();
+		curSelectGood = name;
 		$.mobile.changePage($("#buyGood"));		
 	});
+	
+	$(".findTheList").tap(function(event){
+		var e = event || window.event;
+		var item =  e.target || e.srcElement;
+		var liDom = getLIDom(item);
+		
+		var name = $($($(liDom).children()[0]).children()[1]).text();
+		curSelectGood = name;
+		$.mobile.changePage($("#buyGood"));
+
+	});
+	
+});
+$("#buyGood").on("pagebeforeshow",function(e){
+	if(!curSelectGood){
+		return;
+	}
+	var goodInfo = shopNameToGoodsInfoMap.get(curSelectGood);
+	
+	$("#theGoodName").text(goodInfo.name);
+	$("#theGoodPic").css("background-image","url("+goodInfo.url+")");
+	$("#theGoodPrice").text("￥"+goodInfo.price+"元");
+	
+	$("#theGoodDisp").text(goodInfo.discription);
+	console.log('>>>>'+goodInfo);
 });
 
 $(document).on("pageinit","#buyGood",function(){
+	
 	
 });
 
@@ -174,9 +214,107 @@ $(document).on("pageinit","#businessRigister",function(){
 //			storage.setItem("password",password);
 //			storage.setItem("shopName",shop_name);
 		}
-		$.mobile.changePage($("#uploadpage"));
+		$.ajax({
+	        url: ' http://localhost:8080/Gap/ControlGoodsInfoServer',
+			type : 'post',
+			dataType : 'json',
+			data : {
+				"type":"create",
+				"shopName" : shop_name,
+				"BossName": boss_name,
+				"BossTel": boss_Tel,
+				"password": password
+			},
+			error : function() {
+				console.log('Error occurs at server.');
+			},
+
+			success : function(data) {
+				console.log("upload data sucess");
+				$.mobile.changePage($("#uploadpage"));
+			}
+		});
+		
+		
+		
+		
 	});
 });
+
+
+// 店主上传商品界面
+$(document).on("pageinit","#uploadpage",function(){
+	
+	var imgSrc = null;	
+	
+	$("#scanPic")[0].onchange = function(){		
+		imgSrc = null;		
+		var file = $("#scanPic")[0];	
+		
+		if (file.files && file.files[0]){
+			var reader = new FileReader();
+			reader.onload = function(evt){
+				imgSrc = evt.target.result;
+				$("#upLoadPic").css("background-image","url("+evt.target.result+")");
+			}  
+			reader.readAsDataURL(file.files[0]);
+		}
+	}
+	
+	$("#uploadGood").tap(function(){
+		var goodName = $("#uploadGoodName").val();
+		var goodPrice = $("#uploadGoodPrice").val();
+		var goodDisp = $("#uploadGoodDisp").val();
+		
+		if(!imgSrc){
+			$("#alertMsg").empty();
+			$("#alertMsg").text("请更新您的浏览器再上传图片");
+			$.mobile.changePage($("#alert"));
+			return;
+		}
+		if(!goodName){
+			$("#alertMsg").empty();
+			$("#alertMsg").text("请输入商品名");
+			$.mobile.changePage($("#alert"));
+			return;
+		}
+		if(!goodPrice){
+			$("#alertMsg").empty();
+			$("#alertMsg").text("请输入商品价格");
+			$.mobile.changePage($("#alert"));
+			return;
+		}
+		if(!goodDisp){
+			$("#alertMsg").empty();
+			$("#alertMsg").text("请简单描述下商品");
+			$.mobile.changePage($("#alert"));
+			return;
+		}
+		
+		$.ajax({
+	        url: ' http://localhost:8080/Gap/GetGoodsServer',
+			type : 'post',
+			dataType : 'json',
+			data : {
+				"type":"create",
+				"goodUrl" : imgSrc,
+				"goodName": goodName,
+				"goodPrice": goodPrice,
+				"goodDisp": goodDisp
+			},
+			error : function() {
+				console.log('Error occurs at server.');
+			},
+
+			success : function(data) {
+				console.log("upload data sucess");
+			}
+		});
+	});
+});
+
+
+
 
 $(document).ready(function(){
 	storage = getLocalStorage();
@@ -187,31 +325,82 @@ $(document).ready(function(){
 	if(tel && name){
 		changeUserBar(name,tel);
 	}
+	
+	
 	$.ajax({
-        url: 'GetGoodsServer',
+        url: ' http://localhost:8080/Gap/GetGoodsServer',
 		type : 'post',
 		dataType : 'json',
 		data : {
-			"shopName" : "一号店"
+			"shopName" : "firstShop"
 		},
 		error : function() {
 			console.log('Error occurs at server.');
 		},
 
 		success : function(data) {
-			
-			if (data.Result == 'OK') {
-				alert("Log Success");
-				location.href = '/report/reports.jsp'; 				
-			} else if (data.Message) {
-				alert(data.Message);
-			} else {
-				alert("Log Fails");
-			}
+//			goodArrayInShop = data;
+			updataFrontPage(data);
 		}
 	});
 	
 });
+
+function updataFrontPage(data) {
+	if(!data || data.length <= 0){
+		return;
+	}
+	for(var i = 0; i<data.length; i++){
+		
+		var name = data[i].name
+//		nameToId.name = data[i].id;
+		shopNameToGoodsInfoMap.put(name,data[i]);
+		
+		switch(data[i].recommend){
+		case 1:
+			$($("#good1").children()[0]).attr("src",data[i].url);
+			$($("#good1").children()[1]).text(name);
+			break;
+		case 2:
+			$($("#good2").children()[0]).attr("src",data[i].url);
+			$($("#good2").children()[1]).text(name);
+			break;
+		case 3:
+			$($("#good3").children()[0]).attr("src",data[i].url);
+			$($("#good3").children()[1]).text(name);
+			break;
+		case 4:
+			$($("#good4").children()[0]).attr("src",data[i].url);
+			$($("#good4").children()[1]).text(name);
+			break;
+		case 5:
+			$($("#good5").children()[0]).attr("src",data[i].url);
+			$($("#good5").children()[1]).text(name);
+			break;
+		case 6:
+			$($("#good6").children()[0]).attr("src",data[i].url);
+			$($("#good6").children()[1]).text(name);
+			break;
+		case -1:
+			var goodInfo ="<li id= '"+data[i].id+"'><a data-transition='pop'><img src='"+data[i].url+"'></img><span class='goodPanelInlist'>"+name+"</span></a></li>";
+			$("#goodListCls1").append(goodInfo);
+			$("#goodListCls1").listview("refresh");
+			break;
+		case -2:
+			var goodInfo ="<li id= '"+data[i].id+"'><a data-transition='pop'><img src='"+data[i].url+"'></img><span class='goodPanelInlist'>"+name+"</span></a></li>";
+			$("#goodListCls2").append(goodInfo);
+			$("#goodListCls2").listview("refresh");
+			break;
+		case -3:
+			var goodInfo ="<li id= '"+data[i].id+"'><a data-transition='pop'><img src='"+data[i].url+"'></img><span class='goodPanelInlist'>"+name+"</span></a></li>";
+			$("#goodListCls3").append(goodInfo);
+			$("#goodListCls3").listview("refresh");
+			break;
+		default:
+			break;
+		}
+	}
+}
 
 
 

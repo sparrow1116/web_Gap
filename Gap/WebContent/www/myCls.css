@@ -12,7 +12,7 @@
 .goodPanel{
 	position: relative;
 	left:30%;
-	width:60px;
+	width:80px;
 	height:90px;
 	text-align: center;
 }
@@ -27,7 +27,7 @@
 .goodTitle{
 	width:60px;
 	height:30px;
-	font-size:20px;
+	font-size:10px;
 	font-weight: bold;
 }
 .base-icon{
@@ -129,4 +129,7 @@
 #goPayment{
 	width:48%;
 }
-
+.goodPanelInlist{
+	position: relative;
+	top: 18px;
+}

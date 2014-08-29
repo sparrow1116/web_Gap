@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="lib/jquery.mobile.theme-1.4.3.min.css" type="text/css"></link>
 	
 	<link rel="stylesheet" href="myCls.css">
-	
+	<script src="map.js" type="text/javascript"></script>
 	<script src="lib/jquery-1.10.2.min.js" type="text/javascript"></script>
 	<script src="lib/jquery.mobile-1.4.3.min.js" type="text/javascript"></script>
 	<script src="lib/cordova.js" type="text/javascript"></script>
@@ -75,22 +75,22 @@
 			<div data-role="collapsible-set">							
 				<div data-role="collapsible" >
 					<h2>Class1</h1>
-					<ul id="goodListCls1" data-role="listview">
-						<li><a href="#" data-transition="pop"><img src="img/test1.png"></img><span>test1</span></a></li>
+					<ul id="goodListCls1" data-role="listview" class="findTheList">
+						<!--<li><a href="#" data-transition="pop"><img src="img/test1.png"></img><span class="goodPanelInlist">test1</span></a></li>
 						<li>Good2</li>
-						<li>Good3</li>
+						<li>Good3</li> -->
 					</ul>
 				</div>
 				<div data-role="collapsible">
 					<h2>Class2</h1>
-					<ul id="goodListCls2" data-role="listview">
-						<li>Good4</li><li>Good5</li><li>Good6</li>
+					<ul id="goodListCls2" data-role="listview" class="findTheList">
+						<!-- <li>Good4</li><li>Good5</li><li>Good6</li> -->
 					</ul>
 				</div>
 				<div data-role="collapsible">
 					<h2>Class3</h1>
-					<ul id="goodListCls3" data-role="listview">
-						<li>Good7</li><li>Good8</li><li>Good9</li>
+					<ul id="goodListCls3" data-role="listview" class="findTheList">
+						<!-- <li>Good7</li><li>Good8</li><li>Good9</li> -->
 					</ul>
 				</div>
 			</div>
@@ -201,13 +201,13 @@
 				<legend>上传新的商品信息</legend>
 				<div data-role="fieldcontainer">
 					<div id="uploadPic"></div>
-					<button id="scanPic">浏览</button>
+					<input id="scanPic" data-type="button" type="file" name="doc"></input>
 					<label>商品名：</label>
-					<input type="text"></input>
+					<input type="text" id="uploadGoodName" required placeholder="请输入商品名"></input>
 					<label>价格：</label>
-					<input type="text"></input>
+					<input type="text" id="uploadGoodPrice" required placeholder="请输入商品价格，如：10"></input>
 					<label>商品简述：</label>
-					<input type="text"></input>
+					<input type="text" id="uploadGoodDisp" required placeholder="请简单描述商品"></input>
 				</div>
 			</div>
 		</div>
